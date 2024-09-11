@@ -5,10 +5,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
-  {path:'**',component:PageNotFoundComponent},
   {path:'login',component:LoginComponent},
   {path:'dashboard',component:DashboardComponent},
+  {path:'',component:LoginComponent},
+  {path:'**',component:PageNotFoundComponent},
 ];
 
 @NgModule({

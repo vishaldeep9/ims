@@ -1,11 +1,16 @@
 .parent{
     height: 100vh;
     width: 100vw;
-    background-color: #fff;
+   background-image: url('/assets/picture/login-background.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
 }
 .form{
-    background-color: #ddd;
-    height: 43%;
-    width: 43%;
+    background-color: transparent;
+    height: 38%;
+    width: 38%;
     padding: 20px;
+    box-shadow: 0 0 15px #ddd;
+    color: #fff;
 }
