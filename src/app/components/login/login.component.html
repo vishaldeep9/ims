@@ -3,7 +3,7 @@
         <form [formGroup]="loginForm">
             <div class="form-group">
               <label for="email">Username:</label>
-              <input type="email" class="form-control" placeholder="Enter username" id="email" formControlName="userName">
+              <input type="email" class="form-control" placeholder="Enter username" id="email" formControlName="username">
               <!------ email validation---- -->
               <div class="error-box" *ngIf="loginForm.get('userName')?.touched && loginForm.get('userName')?.invalid">
                 <p class="error" *ngIf="loginForm.get('userName')?.touched && loginForm.get('userName')?.errors?.['required']">username is required</p>
