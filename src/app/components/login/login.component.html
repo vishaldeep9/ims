@@ -1,15 +1,24 @@
 <div class="parent display-flex">
     <div class="form">
-        <form >
+        <form [formGroup]="loginForm">
             <div class="form-group">
-              <label for="email">Email address:</label>
-              <input type="email" class="form-control" placeholder="Enter email" id="email">
+              <label for="email">Username:</label>
+              <input type="email" class="form-control" placeholder="Enter username" id="email" formControlName="userName">
+              <!------ email validation---- -->
+              <div class="error-box" *ngIf="loginForm.get('userName')?.touched && loginForm.get('userName')?.invalid">
+                <p class="error" *ngIf="loginForm.get('userName')?.touched && loginForm.get('userName')?.errors?.['required']">username is required</p>
+              </div>
             </div>
+
             <div class="form-group">
               <label for="pwd">Password:</label>
-              <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+              <input type="password" class="form-control" placeholder="Enter password" id="pwd" formControlName="password">
+              <!------ password validation---- -->
+             <div class="error-box" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                <p class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['pattern']">password pattern is incorrect</p>
+             </div> 
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
           </form>
     </div>
 </div>
