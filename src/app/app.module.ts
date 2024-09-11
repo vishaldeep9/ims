@@ -7,6 +7,8 @@ import { GuardsComponent } from './services/guards/guards.component';
 import { InterceptorsComponent } from './services/interceptors/interceptors.component';
 import { DirectivesComponent } from './services/directives/directives.component';
 import { PipesComponent } from './services/pipes/pipes.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { PipesComponent } from './services/pipes/pipes.component';
     GuardsComponent,
     InterceptorsComponent,
     DirectivesComponent,
-    PipesComponent
+    PipesComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
