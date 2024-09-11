@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -17,14 +18,17 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router:Router) {}
   ngOnInit(): void {}
 
   // * ------login function----------
   login() {
     this.authService.login(this.loginForm.value).subscribe((value) => {
       localStorage.setItem('token', value.token);
-      alert(`login successful`)
+      alert(`login successful`);
+      this.router.navigate(['/dashboard']);
+    },(error)=>{
+      alert(`invalid credentials`)
     });
   }
 }
