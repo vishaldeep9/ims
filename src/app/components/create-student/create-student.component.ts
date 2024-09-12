@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-student',
@@ -24,11 +24,26 @@ export class CreateStudentComponent implements OnInit {
         state: new FormControl(''),
         pincode: new FormControl(''),
       }),
+      education: new FormArray([]),
     });
+  }
+  //-------Form Array-----------------
+  get eductionFormArray() {
+    return this.studentForm.get('education') as FormArray;
+  }
+  addStudent() {
+    this.eductionFormArray.push(
+      new FormGroup({
+        qualification: new FormControl(),
+        year: new FormControl(),
+        percentage: new FormControl(),
+      })
+    );
   }
 
   // -------Register Function----------------
   register() {
     console.log(this.studentForm.value);
+    alert(`Registration Successful`);
   }
 }
