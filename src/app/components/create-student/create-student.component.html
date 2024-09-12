@@ -1,53 +1,102 @@
 <div class="outer display-flex">
-    <div class="parent" >
+    <div class="parent">
         <form [formGroup]="studentForm">
-        <div class="row form-group">
-            <div class="col-sm-4">
-                <label for="name">Name</label>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="name">Name</label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" id="name" class="form-control" placeholder="Enter name" name="name"
+                        formControlName="name">
+                </div>
             </div>
-            <div class="col-sm-8">
-                <input type="text" id="name" class="form-control" placeholder="Enter name" name="name"formControlName="name">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="name">Gender</label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" id="name" class="form-control" placeholder="Enter Gender" name="name"
+                        formControlName="gender">
+                </div>
             </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col-sm-4">
-                <label for="name">Gender</label>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="name">Mobile</label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" id="name" class="form-control" placeholder="Enter Mobile Number" name="name"
+                        formControlName="mobile">
+                </div>
             </div>
-            <div class="col-sm-8">
-                <input type="text" id="name" class="form-control" placeholder="Enter Gender" name="name"formControlName="gender">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="name">Email</label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" id="name" class="form-control" placeholder="Enter Email" name="name"
+                        formControlName="email">
+                </div>
             </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col-sm-4">
-                <label for="name">Mobile</label>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="name">Batch</label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" id="name" class="form-control" placeholder="Enter Batch" name="name"
+                        formControlName="batch">
+                </div>
             </div>
-            <div class="col-sm-8">
-                <input type="text" id="name" class="form-control" placeholder="Enter Mobile Number" name="name"formControlName="mobile">
+            <!-- -------------for address------------ -->
+            <div formGroupName="address">
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">City</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="name" class="form-control" placeholder="Enter City" name="name"
+                            formControlName="city">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">Mandal</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="name" class="form-control" placeholder="Enter Mandal" name="name"
+                            formControlName="mandal">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">District</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="name" class="form-control" placeholder="Enter District" name="name"
+                            formControlName="district">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">State</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="name" class="form-control" placeholder="Enter State" name="name"
+                            formControlName="state">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">Pincode</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="name" class="form-control" placeholder="Enter Pincode" name="name"
+                            formControlName="pincode">
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col-sm-4">
-                <label for="name">Email</label>
+            <div class="button display-flex ">
+                <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
             </div>
-            <div class="col-sm-8">
-                <input type="text" id="name" class="form-control" placeholder="Enter Email" name="name"formControlName="email">
-            </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col-sm-4">
-                <label for="name">Batch</label>
-            </div>
-            <div class="col-sm-8">
-                <input type="text" id="name" class="form-control" placeholder="Enter Batch" name="name"formControlName="batch">
-            </div>
-        </div>
-        <div class="button display-flex ">
-            <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
-        </div>
-    </form>
+        </form>
     </div>
 </div>
