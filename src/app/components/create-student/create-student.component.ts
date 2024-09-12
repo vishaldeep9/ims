@@ -17,11 +17,18 @@ export class CreateStudentComponent implements OnInit {
       mobile: new FormControl(''),
       email: new FormControl(''),
       batch: new FormControl(''),
+      address: new FormGroup({
+        city: new FormControl(''),
+        mandal: new FormControl(''),
+        district: new FormControl(''),
+        state: new FormControl(''),
+        pincode: new FormControl(''),
+      }),
     });
   }
 
   // -------Register Function----------------
-  register(){
+  register() {
     console.log(this.studentForm.value);
   }
 }
