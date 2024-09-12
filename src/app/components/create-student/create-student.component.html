@@ -1,1 +1,53 @@
-<p>create-student works!</p>
+<div class="outer display-flex">
+    <div class="parent" >
+        <form [formGroup]="studentForm">
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label for="name">Name</label>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" id="name" class="form-control" placeholder="Enter name" name="name"formControlName="name">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label for="name">Gender</label>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" id="name" class="form-control" placeholder="Enter Gender" name="name"formControlName="gender">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label for="name">Mobile</label>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" id="name" class="form-control" placeholder="Enter Mobile Number" name="name"formControlName="mobile">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label for="name">Email</label>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" id="name" class="form-control" placeholder="Enter Email" name="name"formControlName="email">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label for="name">Batch</label>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" id="name" class="form-control" placeholder="Enter Batch" name="name"formControlName="batch">
+            </div>
+        </div>
+        <div class="button display-flex ">
+            <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
+        </div>
+    </form>
+    </div>
+</div>
