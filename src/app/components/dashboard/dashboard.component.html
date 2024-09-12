@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+<div class="parent display-flex">
+    <div class="child1">
+        <ul>
+            <li><a routerLink="create-student">Create Student</a></li>
+            <li><a routerLink="all-students">All Students</a></li>
+        </ul>
+        <button (click)="logout()">logout</button>
+    </div>
+    <div class="child2">
+        <router-outlet></router-outlet>
+    </div>
+</div>

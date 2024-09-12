@@ -9,15 +9,13 @@
                 <p class="error" *ngIf="loginForm.get('userName')?.touched && loginForm.get('userName')?.errors?.['required']">username is required</p>
               </div>
             </div>
-
-            <div class="form-group">
+            
               <label for="pwd">Password:</label>
               <input type="password" class="form-control" placeholder="Enter password" id="pwd" formControlName="password">
               <!------ password validation---- -->
              <div class="error-box" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
                 <p class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['pattern']">password pattern is incorrect</p>
              </div> 
-            </div>
             <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
           </form>
     </div>
