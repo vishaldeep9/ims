@@ -12,3 +12,10 @@ html,body{
     color: red;
     text-align: center;
 }
+.error-box{
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    justify-content: end;
+    padding-left: 160px;
+}
