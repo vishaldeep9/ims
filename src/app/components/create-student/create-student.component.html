@@ -1,5 +1,5 @@
 <div class="outer display-flex">
-    <div class="parent">
+    <div class="parent display-flex">
         <form [formGroup]="studentForm">
             <div class="row form-group">
                 <div class="col-sm-4">
@@ -12,11 +12,14 @@
             </div>
             <div class="row form-group">
                 <div class="col-sm-4">
-                    <label for="name">Gender</label>
+                    <label for="gender">Gender</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="text" id="name" class="form-control" placeholder="Enter Gender" name="name"
-                        formControlName="gender">
+                    <input type="radio" name="gender" id="male" title="Male" formControlName="gender" value="male">
+                    <label for="male">Male</label>&nbsp;&nbsp;
+                    <input type="radio" name="gender" id="female" title="Female" formControlName="gender"
+                        value="female">
+                    <label for="female">Female</label>
                 </div>
             </div>
             <div class="row form-group">
@@ -42,7 +45,7 @@
                     <label for="name">Batch</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="text" id="name" class="form-control" placeholder="Enter Batch" name="name"
+                    <input type="date" id="name" class="form-control" placeholder="Enter Batch" name="name"
                         formControlName="batch">
                 </div>
             </div>
@@ -94,6 +97,45 @@
                     </div>
                 </div>
             </div>
+            <!-- --------For Education--------------- -->
+            <div class="button display-flex ">
+                <button type="button" class="btn btn-primary" (click)="addStudent()">Add Student Details</button>
+            </div>
+            <div class="education-details" formArrayName="education"
+                *ngFor="let edu of eductionFormArray.controls;let i=index">
+                <div class="education" formGroupName="{{i}}">
+                    <h5 class="text-align">Student {{i+1}}</h5>
+                    <div class="row form-group">
+                        <div class="col-sm-4">
+                            <label for="name">Qualification</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" id="name" class="form-control" placeholder="Enter Qualification "
+                                name="name" formControlName="qualification">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4">
+                            <label for="name">Year</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" id="name" class="form-control" placeholder="Enter Year " name="name"
+                                formControlName="year">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4">
+                            <label for="name">Percentage</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="number" id="name" class="form-control" placeholder="Enter Percentage"
+                                name="name" formControlName="percentage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- --------------Button------------- -->
+            <br>
             <div class="button display-flex ">
                 <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
             </div>
