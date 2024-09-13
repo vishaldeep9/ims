@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-create-student',
@@ -8,38 +9,44 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateStudentComponent {
   public studentForm!: FormGroup;
-
+  constructor(private studentService: StudentService) {}
   ngOnInit(): void {
     this.studentForm = new FormGroup({
-      name: new FormControl('',Validators.required),
-      gender: new FormControl('',Validators.required),
-      mobile: new FormControl('',Validators.required),
-      email: new FormControl('',Validators.required),
+      name: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      mobile: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
       batch: new FormControl(''),
       address: new FormGroup({
-        city: new FormControl('',Validators.required),
-        mandal: new FormControl('',Validators.required),
-        district: new FormControl('',Validators.required),
-        state: new FormControl('',Validators.required),
-        pincode: new FormControl('',Validators.required),
+        city: new FormControl('', Validators.required),
+        mandal: new FormControl('', Validators.required),
+        district: new FormControl('', Validators.required),
+        state: new FormControl('', Validators.required),
+        pincode: new FormControl('', Validators.required),
       }),
       education: new FormArray([]),
       company: new FormGroup({
-        name: new FormControl('',Validators.required),
-        location: new FormControl('',Validators.required),
-        package: new FormControl('',Validators.required),
-        offerDate: new FormControl('',Validators.required),
+        name: new FormControl('', Validators.required),
+        location: new FormControl('', Validators.required),
+        package: new FormControl('', Validators.required),
+        offerDate: new FormControl('', Validators.required),
       }),
-      sourceType: new FormControl('',Validators.required),
+      sourceType: new FormControl('', Validators.required),
     });
 
     //------for Form Type--------
     this.studentForm.get('sourceType')?.valueChanges.subscribe((value) => {
       if (value == 'direct') {
-        this.studentForm.addControl('sourceFrom', new FormControl('',Validators.required));
+        this.studentForm.addControl(
+          'sourceFrom',
+          new FormControl('', Validators.required)
+        );
         this.studentForm.removeControl('referralName');
       } else {
-        this.studentForm.addControl('referralName', new FormControl('',Validators.required));
+        this.studentForm.addControl(
+          'referralName',
+          new FormControl('', Validators.required)
+        );
         this.studentForm.removeControl('sourceFrom');
       }
     });
@@ -60,14 +67,19 @@ export class CreateStudentComponent {
   }
 
   // -------Register Function----------------
-  register() {
-    console.log(this.studentForm.value);
-    alert(`Registration Successful`);
+  createStudent() {
+    this.studentService.createStudent(this.studentForm.value).subscribe(
+      (value) => {
+        if (value) {
+          alert(`Registration Successful`);
+        }
+      },
+      (error) => {
+        alert(`invalid credentials`);
+      }
+    );
   }
   delete(index: number) {
     this.eductionFormArray.removeAt(index);
   }
-}
-function ngOnInit() {
-  throw new Error('Function not implemented.');
 }
