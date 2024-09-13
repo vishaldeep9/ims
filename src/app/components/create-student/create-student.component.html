@@ -150,7 +150,6 @@
                             formControlName="name">
                     </div>
                 </div>
-
                 <div class="row form-group">
                     <div class="col-sm-4">
                         <label for="name">Location</label>
@@ -160,7 +159,6 @@
                             formControlName="location">
                     </div>
                 </div>
-
                 <div class="row form-group">
                     <div class="col-sm-4">
                         <label for="name">Package</label>
@@ -170,7 +168,6 @@
                             formControlName="package">
                     </div>
                 </div>
-
                 <div class="row form-group">
                     <div class="col-sm-4">
                         <label for="name">Offer Date</label>
@@ -186,7 +183,18 @@
             <input type="radio" formControlName="sourceType" id="direct" value="direct">
             <label for="direct">Direct</label> &nbsp;&nbsp;
             <input type="radio" formControlName="sourceType" id="refer" value="refer">
-            <label for="refer">Refer</label>
+            <label for="refer">Refer</label> <br>
+            <!-- form control condition -->
+            <div class="radio" *ngIf="studentForm.get('sourceType')?.value==='direct' ">
+                <input type="radio" formControlName="sourceFrom" id="social media" value="social media">
+                <label for="social media">Social Media,</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" formControlName="sourceFrom" id="office" value="office">
+                <label for="office">Office</label>
+            </div>
+            <div class="input" *ngIf="studentForm.get('sourceType')?.value==='refer' ">
+                <input type="text" id="name" class="form-control" placeholder="Enter Referral Name"
+                    formControlName="referralName">
+            </div>
             <!-- --------------Button------------- -->
             <br>
             <div class="button display-flex ">
