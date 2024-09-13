@@ -6,10 +6,9 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './create-student.component.html',
   styleUrls: ['./create-student.component.scss'],
 })
-export class CreateStudentComponent  {
+export class CreateStudentComponent {
   public studentForm!: FormGroup;
 
-  constructor() {}
   ngOnInit(): void {
     this.studentForm = new FormGroup({
       name: new FormControl(''),
@@ -25,15 +24,27 @@ export class CreateStudentComponent  {
         pincode: new FormControl(''),
       }),
       education: new FormArray([]),
-      company:new FormGroup({
-        name:new FormControl(),
-        location:new FormControl(),
-        package:new FormControl(),
-        offerDate:new FormControl()
+      company: new FormGroup({
+        name: new FormControl(),
+        location: new FormControl(),
+        package: new FormControl(),
+        offerDate: new FormControl(),
       }),
-      sourceType:new FormControl(),
+      sourceType: new FormControl(),
+    });
+
+    //------for Form Type--------
+    this.studentForm.get('sourceType')?.valueChanges.subscribe((value) => {
+      if (value == 'direct') {
+        this.studentForm.addControl('sourceFrom', new FormControl());
+        this.studentForm.removeControl('referralName');
+      } else {
+        this.studentForm.addControl('referralName', new FormControl());
+        this.studentForm.removeControl('sourceFrom');
+      }
     });
   }
+
   //-------Form Array-----------------
   get eductionFormArray() {
     return this.studentForm.get('education') as FormArray;
@@ -53,11 +64,10 @@ export class CreateStudentComponent  {
     console.log(this.studentForm.value);
     alert(`Registration Successful`);
   }
-  delete(index:number){
+  delete(index: number) {
     this.eductionFormArray.removeAt(index);
   }
 }
 function ngOnInit() {
   throw new Error('Function not implemented.');
 }
-
