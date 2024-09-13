@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-student',
@@ -11,35 +11,35 @@ export class CreateStudentComponent {
 
   ngOnInit(): void {
     this.studentForm = new FormGroup({
-      name: new FormControl(''),
-      gender: new FormControl(''),
-      mobile: new FormControl(''),
-      email: new FormControl(''),
+      name: new FormControl('',Validators.required),
+      gender: new FormControl('',Validators.required),
+      mobile: new FormControl('',Validators.required),
+      email: new FormControl('',Validators.required),
       batch: new FormControl(''),
       address: new FormGroup({
-        city: new FormControl(''),
-        mandal: new FormControl(''),
-        district: new FormControl(''),
-        state: new FormControl(''),
-        pincode: new FormControl(''),
+        city: new FormControl('',Validators.required),
+        mandal: new FormControl('',Validators.required),
+        district: new FormControl('',Validators.required),
+        state: new FormControl('',Validators.required),
+        pincode: new FormControl('',Validators.required),
       }),
       education: new FormArray([]),
       company: new FormGroup({
-        name: new FormControl(),
-        location: new FormControl(),
-        package: new FormControl(),
-        offerDate: new FormControl(),
+        name: new FormControl('',Validators.required),
+        location: new FormControl('',Validators.required),
+        package: new FormControl('',Validators.required),
+        offerDate: new FormControl('',Validators.required),
       }),
-      sourceType: new FormControl(),
+      sourceType: new FormControl('',Validators.required),
     });
 
     //------for Form Type--------
     this.studentForm.get('sourceType')?.valueChanges.subscribe((value) => {
       if (value == 'direct') {
-        this.studentForm.addControl('sourceFrom', new FormControl());
+        this.studentForm.addControl('sourceFrom', new FormControl('',Validators.required));
         this.studentForm.removeControl('referralName');
       } else {
-        this.studentForm.addControl('referralName', new FormControl());
+        this.studentForm.addControl('referralName', new FormControl('',Validators.required));
         this.studentForm.removeControl('sourceFrom');
       }
     });
