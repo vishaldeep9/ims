@@ -1,5 +1,5 @@
-<div class="outer display-flex">
-    <div class="parent display-flex">
+<div class="outer">
+    <div class="parent">
         <form [formGroup]="studentForm">
             <div class="row form-group">
                 <div class="col-sm-4">
@@ -49,6 +49,7 @@
                         formControlName="batch">
                 </div>
             </div>
+            <hr>
             <!-- -------------for address------------ -->
             <div formGroupName="address">
                 <div class="row form-group">
@@ -100,7 +101,7 @@
             <!-- --------For Education--------------- -->
             <div class="button display-flex ">
                 <button type="button" class="btn btn-primary" (click)="addStudent()">Add Student Details</button>
-            </div>
+            </div><br>
             <div class="education-details" formArrayName="education"
                 *ngFor="let edu of eductionFormArray.controls;let i=index">
                 <div class="education" formGroupName="{{i}}">
@@ -136,7 +137,56 @@
                         <button type="button" class="btn btn-primary" (click)="delete(i)">Delete {{i+1}}</button>
                     </div>
                 </div>
+            </div><br>
+            <hr>
+            <!-- -------------------company--------------- -->
+            <div formGroupName="company">
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="name" class="form-control" placeholder="Enter Name" name="name"
+                            formControlName="name">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">Location</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="name" class="form-control" placeholder="Enter Location" name="name"
+                            formControlName="location">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">Package</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="number" id="name" class="form-control" placeholder="Enter Package" name="name"
+                            formControlName="package">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label for="name">Offer Date</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="date" id="name" class="form-control" placeholder="Enter Offer Date" name="name"
+                            formControlName="offerDate">
+                    </div>
+                </div>
             </div>
+            <!------------------------ Form Control------------ -->
+            <label for="sourceType">Source Type</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+            <input type="radio" formControlName="sourceType" id="direct" value="direct">
+            <label for="direct">Direct</label> &nbsp;&nbsp;
+            <input type="radio" formControlName="sourceType" id="refer" value="refer">
+            <label for="refer">Refer</label>
             <!-- --------------Button------------- -->
             <br>
             <div class="button display-flex ">

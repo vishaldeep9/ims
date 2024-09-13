@@ -6,7 +6,7 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './create-student.component.html',
   styleUrls: ['./create-student.component.scss'],
 })
-export class CreateStudentComponent implements OnInit {
+export class CreateStudentComponent  {
   public studentForm!: FormGroup;
 
   constructor() {}
@@ -25,6 +25,13 @@ export class CreateStudentComponent implements OnInit {
         pincode: new FormControl(''),
       }),
       education: new FormArray([]),
+      company:new FormGroup({
+        name:new FormControl(),
+        location:new FormControl(),
+        package:new FormControl(),
+        offerDate:new FormControl()
+      }),
+      sourceType:new FormControl(),
     });
   }
   //-------Form Array-----------------
@@ -50,3 +57,7 @@ export class CreateStudentComponent implements OnInit {
     this.eductionFormArray.removeAt(index);
   }
 }
+function ngOnInit() {
+  throw new Error('Function not implemented.');
+}
+
