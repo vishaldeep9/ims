@@ -30,7 +30,8 @@ export class CreateStudentComponent  {
         location:new FormControl(),
         package:new FormControl(),
         offerDate:new FormControl()
-      })
+      }),
+      sourceType:new FormControl(),
     });
   }
   //-------Form Array-----------------

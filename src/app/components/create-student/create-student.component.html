@@ -48,7 +48,8 @@
                     <input type="date" id="name" class="form-control" placeholder="Enter Batch" name="name"
                         formControlName="batch">
                 </div>
-            </div><hr>
+            </div>
+            <hr>
             <!-- -------------for address------------ -->
             <div formGroupName="address">
                 <div class="row form-group">
@@ -136,7 +137,8 @@
                         <button type="button" class="btn btn-primary" (click)="delete(i)">Delete {{i+1}}</button>
                     </div>
                 </div>
-            </div><br><hr>
+            </div><br>
+            <hr>
             <!-- -------------------company--------------- -->
             <div formGroupName="company">
                 <div class="row form-group">
@@ -179,6 +181,12 @@
                     </div>
                 </div>
             </div>
+            <!------------------------ Form Control------------ -->
+            <label for="sourceType">Source Type</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+            <input type="radio" formControlName="sourceType" id="direct" value="direct">
+            <label for="direct">Direct</label> &nbsp;&nbsp;
+            <input type="radio" formControlName="sourceType" id="refer" value="refer">
+            <label for="refer">Refer</label>
             <!-- --------------Button------------- -->
             <br>
             <div class="button display-flex ">
