@@ -46,4 +46,7 @@ export class CreateStudentComponent implements OnInit {
     console.log(this.studentForm.value);
     alert(`Registration Successful`);
   }
+  delete(index:number){
+    this.eductionFormArray.removeAt(index);
+  }
 }
