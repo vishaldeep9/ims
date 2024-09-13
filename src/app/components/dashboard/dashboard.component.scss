@@ -14,7 +14,7 @@
   color: white; /* White text color for contrast */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the items horizontally */
+  overflow: auto;
   padding: 20px;
   box-shadow: 0 2px 5px #fff;
 }
@@ -67,5 +67,5 @@
   width: 85%;
   height: 100%;
   background-color: transparent;
-  overflow: auto;
+  overflow-y: auto;
 }
