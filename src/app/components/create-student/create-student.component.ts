@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-create-student',
@@ -8,7 +9,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateStudentComponent {
   public studentForm!: FormGroup;
-
+  constructor(private studentService: StudentService) {}
   ngOnInit(): void {
     this.studentForm = new FormGroup({
       name: new FormControl('',Validators.required),
@@ -34,10 +35,16 @@ export class CreateStudentComponent {
     //------for Form Type--------this is inside constructor
     this.studentForm.get('sourceType')?.valueChanges.subscribe((value) => {
       if (value == 'direct') {
-        this.studentForm.addControl('sourceFrom', new FormControl('',Validators.required));
+        this.studentForm.addControl(
+          'sourceFrom',
+          new FormControl('', Validators.required)
+        );
         this.studentForm.removeControl('referralName');
       } else {
-        this.studentForm.addControl('referralName', new FormControl('',Validators.required));
+        this.studentForm.addControl(
+          'referralName',
+          new FormControl('', Validators.required)
+        );
         this.studentForm.removeControl('sourceFrom');
       }
     });
@@ -58,14 +65,19 @@ export class CreateStudentComponent {
   }
 
   // -------Register Function----------------
-  register() {
-    console.log(this.studentForm.value);
-    alert(`Registration Successful`);
+  createStudent() {
+    this.studentService.createStudent(this.studentForm.value).subscribe(
+      (value) => {
+        if (value) {
+          alert(`Registration Successful`);
+        }
+      },
+      (error) => {
+        alert(`invalid credentials`);
+      }
+    );
   }
   delete(index: number) {
     this.eductionFormArray.removeAt(index);
   }
-}
-function ngOnInit() {
-  throw new Error('Function not implemented.');
 }
