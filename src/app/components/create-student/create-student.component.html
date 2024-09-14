@@ -31,12 +31,13 @@
                     <label for="name">Mobile</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="text" id="name" class="form-control" placeholder="Enter Mobile Number" name="name"
+                    <input type="number" id="name" class="form-control" placeholder="Enter Mobile Number" name="name"
                         formControlName="mobile">
                 </div>
                 <!-- ---------mobile----validation------ -->
                 <div *ngIf="studentForm.get('mobile')?.touched && studentForm.get('mobile')?.invalid">
                     <p class="err" *ngIf="studentForm.get('mobile')?.errors?.['required']">mobile is required </p>
+                    <p class="err" *ngIf="studentForm.get('mobile')?.errors?.['pattern']">minimum 10 digit is required</p>
                 </div>
             </div>
             <div class="row form-group">
@@ -137,10 +138,11 @@
                         *ngIf="studentForm.get('address')?.get('pincode')?.touched && studentForm.get('address')?.get('pincode')?.invalid">
                         <p class="err" *ngIf="studentForm.get('address')?.get('pincode')?.errors?.['required']">pincode
                             is required </p>
+                            <p class="err" *ngIf="studentForm.get('address')?.get('pincode')?.errors?.['pattern']">pincode should be 6 numbers</p>
                     </div>
                 </div>
             </div>
-            <!-- --------For Education--------------- -->
+            <!-- --------For Education---Add Student------------ -->
             <div class="button display-flex ">
                 <button type="button" class="btn btn-primary" (click)="addStudent()">Add Student Details</button>
             </div>
@@ -174,6 +176,11 @@
                             <input type="number" id="name" class="form-control" placeholder="Enter Percentage"
                                 name="name" formControlName="percentage">
                         </div>
+                    <!-- ---------Percentage---validation------ -->
+                    <div
+                        *ngIf="edu.get('percentage')?.touched && edu.get('percentage')?.invalid ">
+                        <p class="err" *ngIf="edu.get('percentage')?.errors?.['min'] || edu.get('percentage')?.errors?.['max']">Percentage values should be in between '0-100'</p>
+                    </div>                        
                     </div>
                     <div class="button display-flex ">
                         <button type="button" class="btn btn-primary" (click)="delete(i)">Delete {{i+1}}</button>
