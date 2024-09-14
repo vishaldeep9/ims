@@ -12,29 +12,27 @@ export class CreateStudentComponent {
   constructor(private studentService: StudentService) {}
   ngOnInit(): void {
     this.studentForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      gender: new FormControl('', Validators.required),
-      mobile: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      name: new FormControl('',Validators.required),
+      gender: new FormControl('',Validators.required),
+      mobile: new FormControl('',[Validators.required,Validators.pattern('^[0-9]{10}$')]),
+      email: new FormControl('',Validators.required),
       batch: new FormControl(''),
       address: new FormGroup({
-        city: new FormControl('', Validators.required),
-        mandal: new FormControl('', Validators.required),
-        district: new FormControl('', Validators.required),
-        state: new FormControl('', Validators.required),
-        pincode: new FormControl('', Validators.required),
+        city: new FormControl('',Validators.required),
+        mandal: new FormControl('',Validators.required),
+        district: new FormControl('',Validators.required),
+        state: new FormControl('',Validators.required),
+        pincode: new FormControl('',[Validators.required,Validators.pattern('^[0-9]{6}$')]),
       }),
       education: new FormArray([]),
       company: new FormGroup({
-        name: new FormControl('', Validators.required),
-        location: new FormControl('', Validators.required),
-        package: new FormControl('', Validators.required),
-        offerDate: new FormControl('', Validators.required),
-      }),
-      sourceType: new FormControl('', Validators.required),
+        name: new FormControl('',Validators.required),
+        location: new FormControl('',Validators.required),
+        package: new FormControl('',Validators.required),
+        offerDate: new FormControl('',Validators.required), }),
+      sourceType: new FormControl('',Validators.required),
     });
-
-    //------for Form Type--------
+    //------for Form Type--------this is inside constructor
     this.studentForm.get('sourceType')?.valueChanges.subscribe((value) => {
       if (value == 'direct') {
         this.studentForm.addControl(
@@ -61,7 +59,7 @@ export class CreateStudentComponent {
       new FormGroup({
         qualification: new FormControl(),
         year: new FormControl(),
-        percentage: new FormControl(),
+        percentage: new FormControl("",[Validators.required,Validators.min(0),Validators.max(100)]),
       })
     );
   }
