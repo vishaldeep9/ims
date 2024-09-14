@@ -12,9 +12,20 @@ export class AllStudentsComponent {
   studentForm: any = [];
 
   constructor(private studentService: StudentService) {}
-  ngOnInit():void
-  {
+  ngOnInit(): void {
     this.getStudents();
+  }
+
+  delete(id: number) {
+    this.studentService.deleteById(id).subscribe(
+      (result) => {
+        alert(`delete successful`);
+        this.getStudents();
+      },
+      (error) => {
+        alert(error.error.error);
+      }
+    );
   }
 
   getStudents() {
