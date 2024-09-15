@@ -39,7 +39,7 @@
                     <td>{{ edu.qualification }}</td>
                     <td>{{ edu.year }}</td>
                     <td [ngClass]="{ 'high-score': edu.percentage > 60, 'low-score': edu.percentage <= 60 }"> {{
-                        edu.percentage }} </td>
+                        edu.percentage |percentage}} </td>
                 </tr>
             </tbody>
         </table>
@@ -51,7 +51,7 @@
         <div>
             <strong>Company Name:</strong> {{ student?.company?.name || 'N/A' }}<br>
             <strong>Location:</strong> {{ student?.company?.location || 'N/A' }}<br>
-            <strong>Package:</strong> {{ student?.company?.package || 'N/A' }}<br>
+            <strong>Package:</strong> {{ student?.company?.package || 'N/A' |lpa}}<br>
             <strong>Offer Date:</strong> {{ student?.company?.offerDate || 'N/A' }}
         </div>
     </section>
