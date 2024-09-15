@@ -10,55 +10,71 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class CreateStudentComponent {
   public studentForm!: FormGroup;
-  public id:number|undefined; // this is for edit form
-  public isEdit:boolean=false;// this is for edit form
+  public id: number | undefined; // this is for edit form
+  public isEdit: boolean = false; // this is for edit form
 
-  constructor(private studentService: StudentService,private activatedRoute:ActivatedRoute) {}
+  constructor(
+    private studentService: StudentService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.studentForm = new FormGroup({
-      name: new FormControl('',Validators.required),
-      gender: new FormControl('',Validators.required),
-      mobile: new FormControl('',[Validators.required,Validators.pattern('^[0-9]{10}$')]),
-      email: new FormControl('',Validators.required),
+      name: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      mobile: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]{10}$'),
+      ]),
+      email: new FormControl('', Validators.required),
       batch: new FormControl(''),
       address: new FormGroup({
-        city: new FormControl('',Validators.required),
-        mandal: new FormControl('',Validators.required),
-        district: new FormControl('',Validators.required),
-        state: new FormControl('',Validators.required),
-        pincode: new FormControl('',[Validators.required,Validators.pattern('^[0-9]{6}$')]),
+        city: new FormControl('', Validators.required),
+        mandal: new FormControl('', Validators.required),
+        district: new FormControl('', Validators.required),
+        state: new FormControl('', Validators.required),
+        pincode: new FormControl('', [
+          Validators.required,
+          Validators.pattern('^[0-9]{6}$'),
+        ]),
       }),
       education: new FormArray([]),
       company: new FormGroup({
-        name: new FormControl('',Validators.required),
-        location: new FormControl('',Validators.required),
-        package: new FormControl('',Validators.required),
-        offerDate: new FormControl('',Validators.required), }),
-      sourceType: new FormControl('',Validators.required),
+        name: new FormControl('', Validators.required),
+        location: new FormControl('', Validators.required),
+        package: new FormControl('', Validators.required),
+        offerDate: new FormControl('', Validators.required),
+      }),
+      sourceType: new FormControl('', Validators.required),
     });
     //------for Form Type--------this is inside constructor
     this.studentForm.get('sourceType')?.valueChanges.subscribe((value) => {
       if (value == 'direct') {
         this.studentForm.addControl(
-          'sourceFrom',new FormControl('', Validators.required)
+          'sourceFrom',
+          new FormControl('', Validators.required)
         );
         this.studentForm.removeControl('referralName');
       } else {
         this.studentForm.addControl(
-          'referralName',new FormControl('', Validators.required)
+          'referralName',
+          new FormControl('', Validators.required)
         );
         this.studentForm.removeControl('sourceFrom');
       }
     });
     //------for edit form--------this is inside constructor
-    this.activatedRoute.params.subscribe((data)=>{
-       this.studentService.getStudentById(data['id']).subscribe(
-        (data)=>{
-          this.studentForm.patchValue(data);
-        }
-       )
-    })
+    this.activatedRoute.params.subscribe((data) => {
+      if (data['id']) {
+        this.isEdit = true;
+        this.id = data['id'];
+      } else {
+        this.isEdit = false;
+      }
+      this.studentService.getStudentById(data['id']).subscribe((data) => {
+        this.studentForm.patchValue(data);
+      });
+    });
   }
 
   //-------Form Array-----------------
@@ -70,7 +86,11 @@ export class CreateStudentComponent {
       new FormGroup({
         qualification: new FormControl(),
         year: new FormControl(),
-        percentage: new FormControl("",[Validators.required,Validators.min(0),Validators.max(100)]),
+        percentage: new FormControl('', [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(100),
+        ]),
       })
     );
   }
@@ -81,12 +101,29 @@ export class CreateStudentComponent {
       (value) => {
         if (value) {
           alert(`Registration Successful`);
+          this.studentForm.reset();
         }
       },
       (error) => {
         alert(`invalid credentials`);
       }
     );
+  }
+  updateStudent() {
+    console.log(this.id);
+    if (this.id) {
+      this.studentService
+        .updateStudent(this.id, this.studentForm.value)
+        .subscribe(
+          (result) => {
+            alert(`updated successfully`);
+            this.studentForm.reset();
+          },
+          (err) => {
+            alert(err.error.error);
+          }
+        );
+    }
   }
   delete(index: number) {
     this.eductionFormArray.removeAt(index);

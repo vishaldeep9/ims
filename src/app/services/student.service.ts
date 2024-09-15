@@ -44,4 +44,7 @@ export class StudentService {
   getStudentById(id: number): Observable<Signup> {
     return this.httpClient.get<Signup>(this.url + '/' + id);
   }
+  updateStudent(id: number, data: Signup): Observable<Signup> {
+    return this.httpClient.put<Signup>(this.url + '/' + id, data);
+  }
 }

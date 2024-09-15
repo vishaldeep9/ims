@@ -1,5 +1,8 @@
 <div class="outer">
     <div class="parent">
+        <h3 class="text-align">
+            {{ isEdit ? "Edit Student Form" : "Create Student Form" }}
+        </h3>
         <form [formGroup]="studentForm">
             <div class="row form-group">
                 <div class="col-sm-4">
@@ -7,11 +10,15 @@
                 </div>
                 <div class="col-sm-8">
                     <input type="text" id="name" class="form-control" placeholder="Enter name" name="name"
-                        formControlName="name">
+                        formControlName="name" />
                 </div>
                 <!-- -------name-----validation------ -->
-                <div *ngIf="studentForm.get('name')?.touched && studentForm.get('name')?.invalid">
-                    <p class="err" *ngIf="studentForm.get('name')?.errors?.['required']">name is required </p>
+                <div *ngIf="
+            studentForm.get('name')?.touched && studentForm.get('name')?.invalid
+          ">
+                    <p class="err" *ngIf="studentForm.get('name')?.errors?.['required']">
+                        name is required
+                    </p>
                 </div>
             </div>
             <div class="row form-group">
@@ -19,10 +26,10 @@
                     <label for="gender">Gender</label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="radio" name="gender" id="male" title="Male" formControlName="gender" value="male">
+                    <input type="radio" name="gender" id="male" title="Male" formControlName="gender" value="male" />
                     <label for="male">Male</label>&nbsp;&nbsp;
                     <input type="radio" name="gender" id="female" title="Female" formControlName="gender"
-                        value="female">
+                        value="female" />
                     <label for="female">Female</label>
                 </div>
             </div>
@@ -32,12 +39,19 @@
                 </div>
                 <div class="col-sm-8">
                     <input type="number" id="name" class="form-control" placeholder="Enter Mobile Number" name="name"
-                        formControlName="mobile">
+                        formControlName="mobile" />
                 </div>
                 <!-- ---------mobile----validation------ -->
-                <div *ngIf="studentForm.get('mobile')?.touched && studentForm.get('mobile')?.invalid">
-                    <p class="err" *ngIf="studentForm.get('mobile')?.errors?.['required']">mobile is required </p>
-                    <p class="err" *ngIf="studentForm.get('mobile')?.errors?.['pattern']">minimum 10 digit is required</p>
+                <div *ngIf="
+            studentForm.get('mobile')?.touched &&
+            studentForm.get('mobile')?.invalid
+          ">
+                    <p class="err" *ngIf="studentForm.get('mobile')?.errors?.['required']">
+                        mobile is required
+                    </p>
+                    <p class="err" *ngIf="studentForm.get('mobile')?.errors?.['pattern']">
+                        minimum 10 digit is required
+                    </p>
                 </div>
             </div>
             <div class="row form-group">
@@ -46,11 +60,16 @@
                 </div>
                 <div class="col-sm-8">
                     <input type="email" id="name" class="form-control" placeholder="Enter Email" name="name"
-                        formControlName="email">
+                        formControlName="email" />
                 </div>
                 <!-- ---------email----validation------ -->
-                <div *ngIf="studentForm.get('email')?.touched && studentForm.get('email')?.invalid">
-                    <p class="err" *ngIf="studentForm.get('email')?.errors?.['required']">email is required </p>
+                <div *ngIf="
+            studentForm.get('email')?.touched &&
+            studentForm.get('email')?.invalid
+          ">
+                    <p class="err" *ngIf="studentForm.get('email')?.errors?.['required']">
+                        email is required
+                    </p>
                 </div>
             </div>
             <div class="row form-group">
@@ -59,10 +78,10 @@
                 </div>
                 <div class="col-sm-8">
                     <input type="date" id="name" class="form-control" placeholder="Enter Batch" name="name"
-                        formControlName="batch">
+                        formControlName="batch" />
                 </div>
             </div>
-            <hr>
+            <hr />
             <!-- -------------for address------------ -->
             <div formGroupName="address">
                 <div class="row form-group">
@@ -71,13 +90,16 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="text" id="name" class="form-control" placeholder="Enter City" name="name"
-                            formControlName="city">
+                            formControlName="city" />
                     </div>
                     <!-- ---------city---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('address')?.get('city')?.touched && studentForm.get('address')?.get('city')?.invalid">
-                        <p class="err" *ngIf="studentForm.get('address')?.get('city')?.errors?.['required']">city is
-                            required </p>
+                    <div *ngIf="
+              studentForm.get('address')?.get('city')?.touched &&
+              studentForm.get('address')?.get('city')?.invalid
+            ">
+                        <p class="err" *ngIf="studentForm.get('address')?.get('city')?.errors?.['required']">
+                            city is required
+                        </p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -86,13 +108,16 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="text" id="name" class="form-control" placeholder="Enter Mandal" name="name"
-                            formControlName="mandal">
+                            formControlName="mandal" />
                     </div>
                     <!-- ---------mandal---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('address')?.get('mandal')?.touched && studentForm.get('address')?.get('mandal')?.invalid">
-                        <p class="err" *ngIf="studentForm.get('address')?.get('mandal')?.errors?.['required']">mandal is
-                            required </p>
+                    <div *ngIf="
+              studentForm.get('address')?.get('mandal')?.touched &&
+              studentForm.get('address')?.get('mandal')?.invalid
+            ">
+                        <p class="err" *ngIf="studentForm.get('address')?.get('mandal')?.errors?.['required']">
+                            mandal is required
+                        </p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -101,13 +126,16 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="text" id="name" class="form-control" placeholder="Enter District" name="name"
-                            formControlName="district">
+                            formControlName="district" />
                     </div>
                     <!-- ---------district---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('address')?.get('district')?.touched && studentForm.get('address')?.get('district')?.invalid">
+                    <div *ngIf="
+              studentForm.get('address')?.get('district')?.touched &&
+              studentForm.get('address')?.get('district')?.invalid
+            ">
                         <p class="err" *ngIf="studentForm.get('address')?.get('district')?.errors?.['required']">
-                            district is required </p>
+                            district is required
+                        </p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -116,13 +144,16 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="text" id="name" class="form-control" placeholder="Enter State" name="name"
-                            formControlName="state">
+                            formControlName="state" />
                     </div>
                     <!-- ---------state---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('address')?.get('state')?.touched && studentForm.get('address')?.get('state')?.invalid">
-                        <p class="err" *ngIf="studentForm.get('address')?.get('state')?.errors?.['required']">address is
-                            required </p>
+                    <div *ngIf="
+              studentForm.get('address')?.get('state')?.touched &&
+              studentForm.get('address')?.get('state')?.invalid
+            ">
+                        <p class="err" *ngIf="studentForm.get('address')?.get('state')?.errors?.['required']">
+                            address is required
+                        </p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -131,32 +162,39 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="text" id="name" class="form-control" placeholder="Enter Pincode" name="name"
-                            formControlName="pincode">
+                            formControlName="pincode" />
                     </div>
                     <!-- ---------pincode---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('address')?.get('pincode')?.touched && studentForm.get('address')?.get('pincode')?.invalid">
-                        <p class="err" *ngIf="studentForm.get('address')?.get('pincode')?.errors?.['required']">pincode
-                            is required </p>
-                            <p class="err" *ngIf="studentForm.get('address')?.get('pincode')?.errors?.['pattern']">pincode should be 6 numbers</p>
+                    <div *ngIf="
+              studentForm.get('address')?.get('pincode')?.touched &&
+              studentForm.get('address')?.get('pincode')?.invalid
+            ">
+                        <p class="err" *ngIf="studentForm.get('address')?.get('pincode')?.errors?.['required']">
+                            pincode is required
+                        </p>
+                        <p class="err" *ngIf="studentForm.get('address')?.get('pincode')?.errors?.['pattern']">
+                            pincode should be 6 numbers
+                        </p>
                     </div>
                 </div>
             </div>
             <!-- --------For Education---Add Student------------ -->
-            <div class="button display-flex ">
-                <button type="button" class="btn btn-primary" (click)="addStudent()">Add Student Details</button>
+            <div class="button display-flex">
+                <button type="button" class="btn btn-primary" (click)="addStudent()">
+                    Add Student Details
+                </button>
             </div>
             <div class="education-details" formArrayName="education"
-                *ngFor="let edu of eductionFormArray.controls;let i=index">
-                <div class="education" formGroupName="{{i}}">
-                    <h5 class="text-align">Student {{i+1}}</h5>
+                *ngFor=" let edu of eductionFormArray.controls; let i = index">
+                <div class="education" formGroupName="{{ i }}">
+                    <h5 class="text-align">Student {{ i + 1 }}</h5>
                     <div class="row form-group">
                         <div class="col-sm-4">
                             <label for="name">Qualification</label>
                         </div>
                         <div class="col-sm-8">
                             <input type="text" id="name" class="form-control" placeholder="Enter Qualification "
-                                name="name" formControlName="qualification">
+                                name="name" formControlName="qualification" />
                         </div>
                     </div>
                     <div class="row form-group">
@@ -165,7 +203,7 @@
                         </div>
                         <div class="col-sm-8">
                             <input type="number" id="name" class="form-control" placeholder="Enter Year " name="name"
-                                formControlName="year">
+                                formControlName="year" />
                         </div>
                     </div>
                     <div class="row form-group">
@@ -174,20 +212,27 @@
                         </div>
                         <div class="col-sm-8">
                             <input type="number" id="name" class="form-control" placeholder="Enter Percentage"
-                                name="name" formControlName="percentage">
+                                name="name" formControlName="percentage" />
                         </div>
-                    <!-- ---------Percentage---validation------ -->
-                    <div
-                        *ngIf="edu.get('percentage')?.touched && edu.get('percentage')?.invalid ">
-                        <p class="err" *ngIf="edu.get('percentage')?.errors?.['min'] || edu.get('percentage')?.errors?.['max']">Percentage values should be in between '0-100'</p>
-                    </div>                        
+                        <!-- ---------Percentage---validation------ -->
+                        <div *ngIf="
+                edu.get('percentage')?.touched && edu.get('percentage')?.invalid
+              ">
+                            <p class="err"
+                                *ngIf="edu.get('percentage')?.errors?.['min'] || edu.get('percentage')?.errors?.['max']">
+                                Percentage values should be in between '0-100'
+                            </p>
+                        </div>
                     </div>
-                    <div class="button display-flex ">
-                        <button type="button" class="btn btn-primary" (click)="delete(i)">Delete Student {{i+1}}</button>
+                    <div class="button display-flex">
+                        <button type="button" class="btn btn-primary" (click)="delete(i)">
+                            Delete Student {{ i + 1 }}
+                        </button>
                     </div>
                 </div>
-            </div><br>
-            <hr>
+            </div>
+            <br />
+            <hr />
             <!-- -------------------company--------------- -->
             <div formGroupName="company">
                 <div class="row form-group">
@@ -196,13 +241,16 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="text" id="name" class="form-control" placeholder="Enter Name" name="name"
-                            formControlName="name">
+                            formControlName="name" />
                     </div>
                     <!-- ---------name---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('company')?.get('name')?.touched && studentForm.get('company')?.get('name')?.invalid">
-                        <p class="err" *ngIf="studentForm.get('company')?.get('name')?.errors?.['required']">name is
-                            required </p>
+                    <div *ngIf="
+              studentForm.get('company')?.get('name')?.touched &&
+              studentForm.get('company')?.get('name')?.invalid
+            ">
+                        <p class="err" *ngIf="studentForm.get('company')?.get('name')?.errors?.['required']">
+                            name is required
+                        </p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -211,13 +259,16 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="text" id="name" class="form-control" placeholder="Enter Location" name="name"
-                            formControlName="location">
+                            formControlName="location" />
                     </div>
                     <!-- ---------location---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('company')?.get('location')?.touched && studentForm.get('company')?.get('location')?.invalid">
+                    <div *ngIf="
+              studentForm.get('company')?.get('location')?.touched &&
+              studentForm.get('company')?.get('location')?.invalid
+            ">
                         <p class="err" *ngIf="studentForm.get('company')?.get('location')?.errors?.['required']">
-                            location is required </p>
+                            location is required
+                        </p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -226,13 +277,16 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="number" id="name" class="form-control" placeholder="Enter Package" name="name"
-                            formControlName="package">
+                            formControlName="package" />
                     </div>
                     <!-- ---------package---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('company')?.get('package')?.touched && studentForm.get('company')?.get('package')?.invalid">
-                        <p class="err" *ngIf="studentForm.get('company')?.get('package')?.errors?.['required']">package
-                            is required </p>
+                    <div *ngIf="
+              studentForm.get('company')?.get('package')?.touched &&
+              studentForm.get('company')?.get('package')?.invalid
+            ">
+                        <p class="err" *ngIf="studentForm.get('company')?.get('package')?.errors?.['required']">
+                            package is required
+                        </p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -241,38 +295,45 @@
                     </div>
                     <div class="col-sm-8">
                         <input type="date" id="name" class="form-control" placeholder="Enter Offer Date" name="name"
-                            formControlName="offerDate">
+                            formControlName="offerDate" />
                     </div>
                     <!-- ---------offerData---validation------ -->
-                    <div
-                        *ngIf="studentForm.get('company')?.get('offerDate')?.touched && studentForm.get('company')?.get('offerDate')?.invalid">
+                    <div *ngIf="
+              studentForm.get('company')?.get('offerDate')?.touched &&
+              studentForm.get('company')?.get('offerDate')?.invalid
+            ">
                         <p class="err" *ngIf="studentForm.get('company')?.get('offerDate')?.errors?.['required']">
-                            offerData is
-                            required </p>
+                            offerData is required
+                        </p>
                     </div>
                 </div>
             </div>
             <!------------------------ Form Control------------ -->
-            <label for="sourceType">Source Type</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-            <input type="radio" formControlName="sourceType" id="direct" value="direct">
+            <label for="sourceType">Source Type</label> &nbsp;&nbsp;
+            &nbsp;&nbsp;
+            &nbsp;&nbsp; &nbsp;&nbsp;
+            <input type="radio" formControlName="sourceType" id="direct" value="direct" />
             <label for="direct">Direct</label> &nbsp;&nbsp;
-            <input type="radio" formControlName="sourceType" id="refer" value="refer">
-            <label for="refer">Refer</label> <br>
+            <input type="radio" formControlName="sourceType" id="refer" value="refer" />
+            <label for="refer">Refer</label> <br />
             <!-- form control condition -->
-            <div class="radio" *ngIf="studentForm.get('sourceType')?.value==='direct' ">
-                <input type="radio" formControlName="sourceFrom" id="social media" value="social media">
-                <label for="social media">Social Media,</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" formControlName="sourceFrom" id="office" value="office">
+            <div class="radio" *ngIf="studentForm.get('sourceType')?.value === 'direct'">
+                <input type="radio" formControlName="sourceFrom" id="social media" value="social media" />
+                <label for="social media">Social Media,</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" formControlName="sourceFrom" id="office" value="office" />
                 <label for="office">Office</label>
             </div>
-            <div class="input" *ngIf="studentForm.get('sourceType')?.value==='refer' ">
+            <div class="input" *ngIf="studentForm.get('sourceType')?.value === 'refer'">
                 <input type="text" id="name" class="form-control" placeholder="Enter Referral Name"
-                    formControlName="referralName">
+                    formControlName="referralName" />
             </div>
             <!-- --------------Button------------- -->
-            <br>
-            <div class="button display-flex ">
-                <button type="submit" class="btn btn-primary" (click)="createStudent()">Register</button>
+            <br />
+            <div class="button display-flex">
+                <button type="submit" class="btn btn-primary" (click)="isEdit ? updateStudent() : createStudent()">
+                    {{ isEdit ? "Update" : "Register" }}
+                </button>
             </div>
         </form>
     </div>
