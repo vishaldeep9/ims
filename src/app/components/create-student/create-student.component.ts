@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class CreateStudentComponent {
   public studentForm!: FormGroup;
-  constructor(private studentService: StudentService) {}
+  public id:number|undefined; // this is for edit form
+  public isEdit:boolean=false;// this is for edit form
+
+  constructor(private studentService: StudentService,private activatedRoute:ActivatedRoute) {}
+
   ngOnInit(): void {
     this.studentForm = new FormGroup({
       name: new FormControl('',Validators.required),
@@ -46,6 +51,14 @@ export class CreateStudentComponent {
         this.studentForm.removeControl('sourceFrom');
       }
     });
+    //------for edit form--------this is inside constructor
+    this.activatedRoute.params.subscribe((data)=>{
+       this.studentService.getStudentById(data['id']).subscribe(
+        (data)=>{
+          this.studentForm.patchValue(data);
+        }
+       )
+    })
   }
 
   //-------Form Array-----------------

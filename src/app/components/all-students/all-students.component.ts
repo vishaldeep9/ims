@@ -91,6 +91,10 @@ export class AllStudentsComponent {
     this.router.navigateByUrl(`dashboard/student-details/${id}`);
   }
 
+  edit(id:number){
+    this.router.navigateByUrl(`dashboard/edit-student/${id}`);
+  }
+
   handlePageUpdate() {
     if (this.count && this.pageNo) {
       this.studentService.updatePage(this.count, this.pageNo).subscribe(
