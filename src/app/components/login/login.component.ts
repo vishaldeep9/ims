@@ -25,7 +25,7 @@ export class LoginComponent {
   login() {
     this.authService.login(this.loginForm.value).subscribe((value) => {
       localStorage.setItem('token', value.token);
-      alert(`login successful`);
+      console.log(`login successful`);
       this.router.navigate(['/dashboard']);
     },(error)=>{
       alert(`invalid credentials`)

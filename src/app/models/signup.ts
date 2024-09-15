@@ -1,36 +1,30 @@
-interface Signup {
+export interface Signup {
+  map(arg0: (element: any) => void): any;
+  name: string;
+  gender: 'male' | 'female';
+  id:number;
+  mobile: string;
+  email: string;
+  batch: string;
+  address: {
+    city: string;
+    mandal: string;
+    district: string;
+    state: string;
+    pincode: string;
+  };
+  education: {
+    qualification: string;
+    year: number;
+    percentage: number;
+  }[];
+  company: {
     name: string;
-    gender: 'male' | 'female';
-    mobile: string;
-    email: string;
-    batch: string;
-    address: Address;
-    education: Education[];
-    company: Company;
-    sourceType: 'Direct' | 'Refer';
-    sourceFrom?: string;
-    referralName?: string;
-  }
-  
-  
-  interface Address {
-      city: string;
-      mandal?: string;
-      district?: string;
-      state: string;
-      pincode: string;
-    }
-    
-    interface Education {
-      qualification: string;
-      year: number;
-      percentage: number;
-    }
-    
-    interface Company {
-      name?: string;
-      location?: string;
-      package?: string;
-      offerDate?: string;
-    }
-  
+    location: string;
+    package: string;
+    offerDate: string;
+  };
+  sourceType: 'Direct' | 'Refer';
+  sourceFrom: string;
+  referralName: string;
+}

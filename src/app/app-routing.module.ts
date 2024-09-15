@@ -17,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'create-student', component: CreateStudentComponent ,canDeactivate:[NotifyGuard]},
       { path: 'all-students', component: AllStudentsComponent },
+      {path:'',component:AllStudentsComponent}
     ],
   },
   { path: '', component: LoginComponent },
