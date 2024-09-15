@@ -1,0 +1,68 @@
+<div class="student-details-container">
+    <!-- Personal Information -->
+    <section class="student-section">
+        <h2>Personal Information</h2>
+        <div>
+            <strong>Name:</strong> {{ student?.name }}<br>
+            <strong>Gender:</strong> {{ student?.gender }}<br>
+            <strong>Mobile:</strong> {{ student?.mobile }}<br>
+            <strong>Email:</strong> {{ student?.email }}<br>
+            <strong>Batch:</strong> {{ student?.batch }}
+        </div>
+    </section>
+
+    <!-- Address Information -->
+    <section class="student-section">
+        <h2>Address Information</h2>
+        <div>
+            <strong>City:</strong> {{ student?.address?.city }}<br>
+            <strong>Mandal:</strong> {{ student?.address?.mandal || 'N/A' }}<br>
+            <strong>District:</strong> {{ student?.address?.district || 'N/A' }}<br>
+            <strong>State:</strong> {{ student?.address?.state }}<br>
+            <strong>Pincode:</strong> {{ student?.address?.pincode }}
+        </div>
+    </section>
+
+    <!-- Education Information -->
+    <section class="student-section">
+        <h2>Education Information</h2>
+        <table class="education-table">
+            <thead>
+                <tr>
+                    <th>Qualification</th>
+                    <th>Year</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let edu of student?.education">
+                    <td>{{ edu.qualification }}</td>
+                    <td>{{ edu.year }}</td>
+                    <td [ngClass]="{ 'high-score': edu.percentage > 60, 'low-score': edu.percentage <= 60 }"> {{
+                        edu.percentage }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Company Information -->
+    <section class="student-section">
+        <h2>Company Information</h2>
+        <div>
+            <strong>Company Name:</strong> {{ student?.company?.name || 'N/A' }}<br>
+            <strong>Location:</strong> {{ student?.company?.location || 'N/A' }}<br>
+            <strong>Package:</strong> {{ student?.company?.package || 'N/A' }}<br>
+            <strong>Offer Date:</strong> {{ student?.company?.offerDate || 'N/A' }}
+        </div>
+    </section>
+
+    <!-- Referral Information -->
+    <section class="student-section">
+        <h2>Referral Information</h2>
+        <div>
+            <strong>Source Type:</strong> {{ student?.sourceType }}<br>
+            <strong>Source From:</strong> {{ student?.sourceFrom || 'N/A' }}<br>
+            <strong>Referral Name:</strong> {{ student?.referralName || 'N/A' }}
+        </div>
+    </section>
+</div>

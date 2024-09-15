@@ -1,6 +1,7 @@
 import { Signup } from './../../models/signup';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -18,7 +19,7 @@ export class AllStudentsComponent {
   public order: string = '';
   public text: string = '';
 
-  constructor(private studentService: StudentService) {}
+  constructor(private studentService: StudentService,private router:Router) {}
   ngOnInit(): void {
     this.getStudents();
   }
@@ -84,6 +85,10 @@ export class AllStudentsComponent {
       this.pageNo && this.pageNo++;
       this.handlePageUpdate();
     }
+  }
+
+  view(id:number){
+    this.router.navigateByUrl(`dashboard/student-details/${id}`);
   }
 
   handlePageUpdate() {

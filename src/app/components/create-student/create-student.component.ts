@@ -36,14 +36,12 @@ export class CreateStudentComponent {
     this.studentForm.get('sourceType')?.valueChanges.subscribe((value) => {
       if (value == 'direct') {
         this.studentForm.addControl(
-          'sourceFrom',
-          new FormControl('', Validators.required)
+          'sourceFrom',new FormControl('', Validators.required)
         );
         this.studentForm.removeControl('referralName');
       } else {
         this.studentForm.addControl(
-          'referralName',
-          new FormControl('', Validators.required)
+          'referralName',new FormControl('', Validators.required)
         );
         this.studentForm.removeControl('sourceFrom');
       }

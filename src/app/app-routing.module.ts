@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AuthGuard } from './services/guards/auth.guard';
 import { AllStudentsComponent } from './components/all-students/all-students.component';
 import { NotifyGuard } from './services/guards/notify.guard';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,11 +16,17 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'create-student', component: CreateStudentComponent ,canDeactivate:[NotifyGuard]},
+      {
+        path: 'create-student',
+        component: CreateStudentComponent,
+        canDeactivate: [NotifyGuard],
+      },
       { path: 'all-students', component: AllStudentsComponent },
-      {path:'',component:AllStudentsComponent}
-    ],
+      { path: '', component: AllStudentsComponent },
+      { path: 'student-details/:id', component: StudentDetailsComponent },
+    ],   
   },
+
   { path: '', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

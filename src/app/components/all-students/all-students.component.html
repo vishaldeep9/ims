@@ -58,7 +58,11 @@
                     <td>{{stu.address.state}}</td>
                     <td>{{stu.company.name}}</td>
                     <td>{{stu.company.package}}</td>
-                    <td><button (click)="delete(stu.id)">Delete</button></td>
+                    <td>
+                     <button (click)="delete(stu.id)">Delete</button> &nbsp;
+                        <button (click)="view(stu.id)">View</button>&nbsp;
+                        <button>Edit</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
