@@ -1,0 +1,53 @@
+/* General container styling */
+.student-details-container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Section styling */
+.student-section {
+    margin-bottom: 30px;
+}
+
+.student-section h2 {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.student-section div {
+    padding-left: 10px;
+}
+
+/* Table styling */
+.education-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.education-table th,
+.education-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.education-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.education-table td.high-score {
+    color: green;
+}
+
+.education-table td.low-score {
+    color: red;
+}
