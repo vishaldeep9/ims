@@ -41,7 +41,7 @@ export class StudentService {
   filtering(text: string): Observable<Signup[]> {
     return this.httpClient.get<Signup[]>(this.url + '?filter=' + text);
   }
-  view(id: number): Observable<Signup> {
+  getStudentById(id: number): Observable<Signup> {
     return this.httpClient.get<Signup>(this.url + '/' + id);
   }
 }

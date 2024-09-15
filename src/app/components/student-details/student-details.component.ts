@@ -18,7 +18,7 @@ export class StudentDetailsComponent {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((data) => {
-      this.studentService.view(data['id']).subscribe(
+      this.studentService.getStudentById(data['id']).subscribe(
         (data) => {
           this.student = data;
         },
