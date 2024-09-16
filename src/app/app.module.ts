@@ -13,6 +13,7 @@ import { AllStudentsComponent } from './components/all-students/all-students.com
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { PercentagePipe } from './services/pipes/percentage.pipe';
 import { LpaPipe } from './services/pipes/lpa.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LpaPipe } from './services/pipes/lpa.pipe';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

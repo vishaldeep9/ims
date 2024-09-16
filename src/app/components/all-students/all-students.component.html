@@ -1,70 +1,88 @@
 <div class="outer">
-    <div class="parent">
-        <div class="search">
-            <!---------------- Filtering-------------- -->
-            <div>
-                <input type="text" placeholder="search details" [(ngModel)]="text" (keydown)="filtering()">
-            </div>
-            <!---------------- Sorting-------------- -->
-            <div>
-                <label for="">column</label>
-                <select name="" id="" [(ngModel)]="column">
-                    <option value="id">Id</option>
-                    <option value="package">Package</option>
-                    <option value="batch">Batch</option>
-                </select>
-                <label for="">order</label>
-                <select name="" id="" [(ngModel)]="order">
-                    <option value="asc">Ascending</option>
-                    <option value="desc">Descending</option>
-                </select>
-                <button (click)="sorting()">sorting</button>
-            </div>
-            <!---------------- Pagination-------------- -->
-            <div>
-                <label for="">count</label>
-                <!-- here this min is restricting from scroll -->
-                <input type="number" name="" id="" [(ngModel)]="count" min="1">
-                <label for="">pg no</label>
-                <input type="number" name="" id="" [(ngModel)]="pageNo" min="1">
-                <button (click)="pagination()">paginate</button>
-                <button *ngIf="isVisible===true && pageNo!==undefined &&pageNo>1" (click)="updatePage('previous')"><< </button>
-                 <button (click)="updatePage('next')" *ngIf="isVisible===true">>></button>
-            </div>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Phone</th>
-                    <th>Batch</th>
-                    <th>District</th>
-                    <th>State</th>
-                    <th>Company Name</th>
-                    <th>Package</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let stu of studentForm;let i=index">
-                    <td>{{stu.id}}</td>
-                    <td>{{stu.name}}</td>
-                    <td>{{stu.gender}}</td>
-                    <td>{{stu.mobile}}</td>
-                    <td>{{stu.batch}}</td>
-                    <td>{{stu.address.district}}</td>
-                    <td>{{stu.address.state}}</td>
-                    <td>{{stu.company.name}}</td>
-                    <td>{{stu.company.package}}</td>
-                    <td>
-                     <button (click)="delete(stu.id)">Delete</button> &nbsp;
-                        <button (click)="view(stu.id)">View</button>&nbsp;
-                        <button (click)="edit(stu.id)">Edit</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="parent">
+    <div class="search">
+      <!---------------- Filtering-------------- -->
+      <div>
+        <input
+          type="text"
+          placeholder="search details"
+          [(ngModel)]="text"
+          (keydown)="filtering()"
+        />
+      </div>
+      <!---------------- Sorting-------------- -->
+      <div>
+        <label for="">column</label>
+        <select name="" id="" [(ngModel)]="column">
+          <option value="id">Id</option>
+          <option value="package">Package</option>
+          <option value="batch">Batch</option>
+        </select>
+        <label for="">order</label>
+        <select name="" id="" [(ngModel)]="order">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+        <button (click)="sorting()">sorting</button>
+      </div>
+      <!---------------- Pagination-------------- -->
+      <div>
+        <label for="">count</label>
+        <!-- here this min is restricting from scroll -->
+        <input type="number" name="" id="" [(ngModel)]="count" min="1" />
+        <label for="">pg no</label>
+        <input type="number" name="" id="" [(ngModel)]="pageNo" min="1" />
+        <button (click)="pagination()">paginate</button>
+        <button
+          *ngIf="isVisible === true && pageNo !== undefined && pageNo > 1"
+          (click)="updatePage('previous')"
+        >
+          <<
+        </button>
+        <button (click)="updatePage('next')" *ngIf="isVisible === true">
+          >>
+        </button>
+      </div>
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Phone</th>
+          <th>Batch</th>
+          <th>District</th>
+          <th>State</th>
+          <th>Company Name</th>
+          <th>Package</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stu of studentForm; let i = index">
+          <td>{{ stu.id }}</td>
+          <td>{{ stu.name }}</td>
+          <td>{{ stu.gender }}</td>
+          <td>{{ stu.mobile }}</td>
+          <td>{{ stu.batch }}</td>
+          <td>{{ stu.address.district }}</td>
+          <td>{{ stu.address.state }}</td>
+          <td>{{ stu.company.name }}</td>
+          <td>{{ stu.company.package }}</td>
+          <td>
+            <fa-icon [icon]="deleteIcon" (click)="delete(stu.id)"></fa-icon>
+            &nbsp;
+            <fa-icon [icon]="viewIcon" (click)="view(stu.id)"></fa-icon>
+            &nbsp;
+            <fa-icon
+              [icon]="editIcon"
+              (click)="view(stu.id)"
+              (click)="edit(stu.id)"
+            ></fa-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StudentService } from 'src/app/services/student.service';
-
+import {faEye, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-all-students',
   templateUrl: './all-students.component.html',
@@ -18,6 +18,9 @@ export class AllStudentsComponent {
   public column: string = '';
   public order: string = '';
   public text: string = '';
+ deleteIcon=faTrash;
+ viewIcon=faEye;
+ editIcon=faPenToSquare
 
   constructor(private studentService: StudentService,private router:Router) {}
   ngOnInit(): void {
