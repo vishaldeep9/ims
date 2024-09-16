@@ -7,7 +7,7 @@
             <strong>Gender:</strong> {{ student?.gender }}<br>
             <strong>Mobile:</strong> {{ student?.mobile }}<br>
             <strong>Email:</strong> {{ student?.email }}<br>
-            <strong>Batch:</strong> {{ student?.batch }}
+            <strong>Batch:</strong> {{ student?.batch | date:'yyyy-MM-dd' }}
         </div>
     </section>
 

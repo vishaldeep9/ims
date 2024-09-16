@@ -72,6 +72,11 @@ export class CreateStudentComponent {
         this.isEdit = false;
       }
       this.studentService.getStudentById(data['id']).subscribe((data) => {
+        // this is for patch education details-->
+        //here first we are opening add student box then later on patching education data
+        for(let education of data.education){
+          this.addStudent();
+        }
         this.studentForm.patchValue(data);
       });
     });

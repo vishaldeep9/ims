@@ -65,7 +65,7 @@
           <td>{{ stu.name }}</td>
           <td>{{ stu.gender }}</td>
           <td>{{ stu.mobile }}</td>
-          <td>{{ stu.batch }}</td>
+          <td>{{ stu.batch | date:'yyyy-MM-dd' }}</td>
           <td>{{ stu.address.district }}</td>
           <td>{{ stu.address.state }}</td>
           <td>{{ stu.company.name }}</td>
